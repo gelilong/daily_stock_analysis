@@ -21,6 +21,7 @@ const {
   applyPartialUpdate,
   refreshAfterExternalSave,
   refreshStatus,
+  settingsFieldThrowKey,
   useAuthMock,
   useSystemConfigMock,
   webBuildInfoMock,
@@ -41,6 +42,7 @@ const {
   applyPartialUpdate: vi.fn(),
   refreshAfterExternalSave: vi.fn(),
   refreshStatus: vi.fn(),
+  settingsFieldThrowKey: { value: '' },
   useAuthMock: vi.fn(),
   useSystemConfigMock: vi.fn(),
   webBuildInfoMock: {
@@ -139,7 +141,12 @@ vi.mock('../../components/settings', () => ({
       ))}
     </nav>
   ),
-  SettingsField: ({ item }: { item: { key: string } }) => <div>{item.key}</div>,
+  SettingsField: ({ item }: { item: { key: string } }) => {
+    if (settingsFieldThrowKey.value === item.key) {
+      throw new Error(`boom:${item.key}`);
+    }
+    return <div>{item.key}</div>;
+  },
   SettingsLoading: () => <div>loading</div>,
   SettingsSectionCard: ({
     title,
@@ -383,6 +390,7 @@ describe('SettingsPage', () => {
       refreshStatus,
     });
     useSystemConfigMock.mockReturnValue(buildSystemConfigState());
+    settingsFieldThrowKey.value = '';
     delete (window as { dsaDesktop?: unknown }).dsaDesktop;
     vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:mock');
     vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => undefined);
@@ -633,6 +641,22 @@ describe('SettingsPage', () => {
 
     expect(screen.getByText('通知测试面板:WECHAT_WEBHOOK_URL')).toBeInTheDocument();
     expect(screen.getByText('WECHAT_WEBHOOK_URL')).toBeInTheDocument();
+  });
+
+  it('keeps settings page usable when a category field throws during render', () => {
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    settingsFieldThrowKey.value = 'WECHAT_WEBHOOK_URL';
+    useSystemConfigMock.mockReturnValue(buildSystemConfigState({ activeCategory: 'notification' }));
+
+    render(<SettingsPage />);
+
+    expect(screen.getByRole('heading', { name: '系统设置' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'System' })).toBeInTheDocument();
+    expect(screen.getByText(/通知渠道 设置暂时无法显示/)).toBeInTheDocument();
+    expect(screen.getByText(/desktop\.log/)).toBeInTheDocument();
+    expect(screen.getByText(/boom:WECHAT_WEBHOOK_URL/)).toBeInTheDocument();
+
+    consoleErrorSpy.mockRestore();
   });
 
   it('renders env backup actions outside desktop runtime', () => {

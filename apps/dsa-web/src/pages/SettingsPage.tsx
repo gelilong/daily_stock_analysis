@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { Component, useEffect, useRef, useState } from 'react';
 import { useAuth, useSystemConfig } from '../hooks';
 import { createParsedApiError, getParsedApiError, type ParsedApiError } from '../api/error';
 import { systemConfigApi } from '../api/systemConfig';
@@ -17,7 +17,7 @@ import {
   SettingsSectionCard,
 } from '../components/settings';
 import { WEB_BUILD_INFO } from '../utils/constants';
-import { getCategoryDescriptionZh } from '../utils/systemConfigI18n';
+import { getCategoryDescriptionZh, getCategoryTitleZh } from '../utils/systemConfigI18n';
 import type { SystemConfigCategory } from '../types/systemConfig';
 
 type DesktopWindow = Window & {
@@ -70,6 +70,64 @@ type DesktopUpdateNotice = {
   actionLabel?: string;
   actionKind?: 'release' | 'install';
 };
+
+type SettingsContentErrorBoundaryProps = {
+  categoryTitle: string;
+  resetKey: string;
+  children: React.ReactNode;
+};
+
+type SettingsContentErrorBoundaryState = {
+  hasError: boolean;
+  message: string;
+};
+
+class SettingsContentErrorBoundary extends Component<
+  SettingsContentErrorBoundaryProps,
+  SettingsContentErrorBoundaryState
+> {
+  state: SettingsContentErrorBoundaryState = {
+    hasError: false,
+    message: '',
+  };
+
+  static getDerivedStateFromError(error: unknown): SettingsContentErrorBoundaryState {
+    return {
+      hasError: true,
+      message: error instanceof Error ? error.message : 'Unknown settings render error',
+    };
+  }
+
+  componentDidUpdate(previousProps: SettingsContentErrorBoundaryProps) {
+    if (previousProps.resetKey !== this.props.resetKey && this.state.hasError) {
+      this.setState({ hasError: false, message: '' });
+    }
+  }
+
+  componentDidCatch(error: unknown, info: unknown) {
+    console.error('Settings category render failed', error, info);
+  }
+
+  render() {
+    if (!this.state.hasError) {
+      return this.props.children;
+    }
+
+    const detail = this.state.message ? `错误信息：${this.state.message}。` : '';
+    return (
+      <SettingsSectionCard
+        title="当前分类加载失败"
+        description="该设置分类出现运行时异常，页面已保留其它导航与操作。"
+      >
+        <SettingsAlert
+          title={`${this.props.categoryTitle} 设置暂时无法显示`}
+          message={`${detail}请记录当前点击的设置分类，并提供 release 版本、Windows 版本和 desktop.log 继续排查。`}
+          variant="error"
+        />
+      </SettingsSectionCard>
+    );
+  }
+}
 
 function trimDesktopRuntimeString(value: unknown) {
   return typeof value === 'string' ? value.trim() : '';
@@ -308,7 +366,12 @@ const SettingsPage: React.FC = () => {
     };
   }, [canCheckDesktopUpdate, desktopRuntimeApi]);
 
-  const rawActiveItems = itemsByCategory[activeCategory] || [];
+  const safeCategories = Array.isArray(categories) ? categories : [];
+  const safeItemsByCategory =
+    itemsByCategory && typeof itemsByCategory === 'object' ? itemsByCategory : {};
+  const rawActiveItems = Array.isArray(safeItemsByCategory[activeCategory])
+    ? safeItemsByCategory[activeCategory]
+    : [];
   const rawActiveItemMap = new Map(rawActiveItems.map((item) => [item.key, String(item.value ?? '')]));
   const hasConfiguredChannels = Boolean((rawActiveItemMap.get('LLM_CHANNELS') || '').trim());
   const hasLitellmConfig = Boolean((rawActiveItemMap.get('LITELLM_CONFIG') || '').trim());
@@ -365,6 +428,7 @@ const SettingsPage: React.FC = () => {
       : rawActiveItems;
   const isEnvBackupAllowed = isDesktopRuntime || authEnabled;
   const envBackupActionDisabled = isLoading || isSaving || isExportingEnv || isImportingEnv || !isEnvBackupAllowed;
+  const activeCategoryTitle = getCategoryTitleZh(activeCategory as SystemConfigCategory, activeCategory);
 
   const downloadEnvBackup = async () => {
     setEnvBackupActionError(null);
@@ -554,14 +618,18 @@ const SettingsPage: React.FC = () => {
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[280px_1fr]">
           <aside className="lg:sticky lg:top-4 lg:self-start">
             <SettingsCategoryNav
-              categories={categories}
-              itemsByCategory={itemsByCategory}
+              categories={safeCategories}
+              itemsByCategory={safeItemsByCategory}
               activeCategory={activeCategory}
               onSelect={setActiveCategory}
             />
           </aside>
 
           <section className="space-y-4">
+            <SettingsContentErrorBoundary
+              categoryTitle={activeCategoryTitle}
+              resetKey={activeCategory}
+            >
             {activeCategory === 'system' ? <AuthSettingsCard /> : null}
             {activeCategory === 'system' ? (
               <SettingsSectionCard
@@ -783,6 +851,7 @@ const SettingsPage: React.FC = () => {
                 className="settings-surface-panel settings-border-strong border-none bg-transparent shadow-none"
               />
             )}
+            </SettingsContentErrorBoundary>
           </section>
         </div>
       )}
