@@ -490,26 +490,13 @@ jobs:
             
             # 推送到 PushPlus 微信
             if [ -n "$PUSHPLUS_TOKEN" ] && [ -f reports/alphasift_result.txt ]; then
-              echo ""
               echo "📲 推送选股结果到微信..."
-              python3 -c "
-import json, urllib.request
-with open('reports/alphasift_result.txt', 'r') as f:
-    content = f.read()[:2000]
-msg = {
-    'token': '$PUSHPLUS_TOKEN',
-    'title': 'AlphaSift 选股日报 | volume_breakout',
-    'content': content,
-    'template': 'txt'
-}
-req = urllib.request.Request(
-    'http://www.pushplus.plus/send',
-    data=json.dumps(msg, ensure_ascii=False).encode('utf-8'),
-    headers={'Content-Type': 'application/json'}
-)
-resp = json.loads(urllib.request.urlopen(req).read())
-print('PushPlus 响应:', resp.get('msg', resp))
-              "
+              CONTENT=$(head -c 2000 reports/alphasift_result.txt)
+              curl -s -X POST http://www.pushplus.plus/send \
+                -H "Content-Type: application/json" \
+                -d "{\"token\":\"$PUSHPLUS_TOKEN\",\"title\":\"AlphaSift选股 volume_breakout\",\"content\":$(echo "$CONTENT" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'),\"template\":\"txt\"}"
+              echo ""
+              echo "✅ 推送完成"
             else
               echo "⚠️ 跳过微信推送（PUSHPLUS_TOKEN 未配置或结果文件不存在）"
             fi
