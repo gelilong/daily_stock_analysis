@@ -1,0 +1,227 @@
+2026-06-07 08:03:41,077 [INFO] src.config: LLM channel 'deepseek': 1 model(s), 1 key(s)
+2026-06-07 08:03:41 | INFO     | src/logging_config.py:188 | 日志系统初始化完成，日志目录: logs
+2026-06-07 08:03:41 | INFO     | src/logging_config.py:189 | 常规日志: logs/stock_analysis_20260607.log
+2026-06-07 08:03:41 | INFO     | src/logging_config.py:190 | 调试日志: logs/stock_analysis_debug_20260607.log
+2026-06-07 08:03:41 | INFO     | main.py:832 | ============================================================
+2026-06-07 08:03:41 | INFO     | main.py:833 | A股自选股智能分析系统 启动
+2026-06-07 08:03:41 | INFO     | main.py:834 | 运行时间: 2026-06-07 08:03:41
+2026-06-07 08:03:41 | INFO     | main.py:835 | ============================================================
+2026-06-07 08:03:41 | WARNING  | main.py:840 | 未配置通知渠道，将不发送推送通知
+2026-06-07 08:03:41 | INFO     | src/webui_frontend.py:199 | 检测到可直接复用的前端静态产物，跳过运行时自动构建: /Users/lilongge/WorkBuddy/2026-06-06-14-44-58/daily_stock_analysis/static/index.html
+2026-06-07 08:03:41 | INFO     | main.py:712 | FastAPI 服务已启动: http://127.0.0.1:8000
+2026-06-07 08:03:41 | INFO     | main.py:894 | 模式: 仅 Web 服务
+2026-06-07 08:03:41 | INFO     | main.py:895 | Web 服务运行中: http://127.0.0.1:8000
+2026-06-07 08:03:41 | INFO     | main.py:896 | 通过 /api/v1/analysis/analyze 接口触发分析
+2026-06-07 08:03:41 | INFO     | main.py:897 | API 文档: http://127.0.0.1:8000/docs
+2026-06-07 08:03:41 | INFO     | main.py:898 | 按 Ctrl+C 退出...
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/server.py:92 | Started server process [9049]
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/lifespan/on.py:48 | Waiting for application startup.
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/lifespan/on.py:62 | Application startup complete.
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/server.py:224 | Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-06-07 08:03:45 | INFO     | src/services/task_queue.py:193 | [TaskQueue] 初始化完成，最大并发: 3
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56945 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:03:45 | INFO     | src/storage.py:860 | 数据库初始化完成: sqlite:////Users/lilongge/WorkBuddy/2026-06-06-14-44-58/daily_stock_analysis/data/stock_analysis.db
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56944 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56942 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:03:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56943 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:03:46 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56945 - "GET /api/v1/analysis/tasks/stream HTTP/1.1" 200
+2026-06-07 08:03:46 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56944 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:03:49 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56951 - "HEAD / HTTP/1.1" 405
+2026-06-07 08:04:04 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56981 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:04:04 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56980 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:04:04 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56978 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:04 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56979 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56999 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:04:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56996 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56998 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:04:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:56997 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:31 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57040 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:04:31 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57039 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:04:31 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57037 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:31 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57038 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57073 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:04:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57072 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:04:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57070 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:04:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57071 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57120 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:05:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57119 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:05:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57117 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57118 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57149 - "GET /api/v1/history/2 HTTP/1.1" 200
+2026-06-07 08:05:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57149 - "GET /api/v1/history/2/news?limit=8 HTTP/1.1" 200
+2026-06-07 08:05:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57150 - "GET /api/v1/history/2/diagnostics HTTP/1.1" 200
+2026-06-07 08:05:29 | INFO     | src/services/task_queue.py:441 | [TaskQueue] 任务已提交: 603986.SH -> b53bafee30f04fbbbb915a74a5f174b8
+2026-06-07 08:05:29 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57262 - "POST /api/v1/analysis/analyze HTTP/1.1" 202
+2026-06-07 08:05:29 | INFO     | data_provider/tushare_fetcher.py:169 | Tushare API 初始化成功
+2026-06-07 08:05:29 | INFO     | data_provider/tushare_fetcher.py:200 | ✅ 检测到 TUSHARE_TOKEN 且 API 初始化成功，Tushare 数据源优先级提升为最高 (Priority -1)
+2026-06-07 08:05:29 | INFO     | data_provider/base.py:1113 | 已初始化 6 个数据源（按优先级）: TushareFetcher(P-1), EfinanceFetcher(P0), AkshareFetcher(P1), PytdxFetcher(P2), BaostockFetcher(P3), YfinanceFetcher(P4)
+2026-06-07 08:05:29 | INFO     | src/analyzer.py:2205 | Analyzer LLM: Router initialized from channels/YAML — 1 deployment(s), models: ['deepseek/deepseek-v4-pro']
+2026-06-07 08:05:29 | WARNING  | src/notification.py:249 | 未配置有效的通知渠道，将不发送推送通知
+2026-06-07 08:05:29 | INFO     | src/search_service.py:2248 | 已启用 SearXNG 公共实例自动发现模式
+2026-06-07 08:05:29 | INFO     | src/search_service.py:2253 | 已配置 Anspire Search 搜索，共 1 个 API Key
+2026-06-07 08:05:29 | INFO     | src/search_service.py:2264 | 新闻时效策略已启用: profile=short, profile_days=3, NEWS_MAX_AGE_DAYS=3, effective_window=3
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:157 | 调度器初始化完成，最大并发数: 3
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:158 | 已启用技术分析引擎（均线/趋势/量价指标）
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:161 | 实时行情已启用 (优先级: tushare,tencent,akshare_sina,efinance,akshare_em)
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:165 | 筹码分布分析已启用
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:171 | 搜索服务已启用
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:2194 | ========== 开始处理 603986.SH ==========
+2026-06-07 08:05:29 | INFO     | src/core/pipeline.py:246 | 兆易创新(603986.SH) 2026-06-05 数据已存在，跳过获取（断点续传）
+2026-06-07 08:05:30 | WARNING  | data_provider/tushare_fetcher.py:775 | Tushare (旧版) 获取实时行情失败 603986.SH: HTTP Error 400: Bad Request
+2026-06-07 08:05:30 | INFO     | data_provider/akshare_fetcher.py:1226 | [API调用] 腾讯财经接口获取 603986 实时行情: endpoint=qt.gtimg.cn/q, symbol=sh603986
+2026-06-07 08:05:33 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57262 - "GET /api/v1/history/1 HTTP/1.1" 200
+2026-06-07 08:05:35 | INFO     | data_provider/akshare_fetcher.py:1333 | [实时行情-腾讯] 603986 兆易创新: endpoint=qt.gtimg.cn/q, 价格=488.0, 涨跌=-7.8%, 量比=1.01, 换手率=8.19%, elapsed=4.48s
+2026-06-07 08:05:35 | INFO     | data_provider/base.py:1649 | [实时行情] 603986 成功获取 (来源: tencent)
+2026-06-07 08:05:35 | INFO     | src/core/pipeline.py:327 | 兆易创新(603986.SH) 实时行情: 价格=488.0, 量比=1.01, 换手率=8.19% (来源: tencent)
+2026-06-07 08:05:35 | INFO     | data_provider/tushare_fetcher.py:1188 | [筹码分布] 603986 日期=2026-06-05: 获利比例=39.6%, 平均成本=489.7117, 90%集中度=8.33%, 70%集中度=4.66%
+2026-06-07 08:05:35 | INFO     | data_provider/base.py:1893 | [筹码分布] 603986 成功获取 (来源: TushareFetcher)
+2026-06-07 08:05:35 | INFO     | src/core/pipeline.py:346 | 兆易创新(603986.SH) 筹码分布: 获利比例=39.6%, 90%集中度=8.33%
+2026-06-07 08:05:35 | WARNING  | data_provider/tushare_fetcher.py:775 | Tushare (旧版) 获取实时行情失败 603986: HTTP Error 400: Bad Request
+2026-06-07 08:05:35 | INFO     | data_provider/akshare_fetcher.py:1226 | [API调用] 腾讯财经接口获取 603986 实时行情: endpoint=qt.gtimg.cn/q, symbol=sh603986
+2026-06-07 08:05:39 | INFO     | data_provider/akshare_fetcher.py:1333 | [实时行情-腾讯] 603986 兆易创新: endpoint=qt.gtimg.cn/q, 价格=488.0, 涨跌=-7.8%, 量比=1.01, 换手率=8.19%, elapsed=3.44s
+2026-06-07 08:05:39 | INFO     | data_provider/base.py:1649 | [实时行情] 603986 成功获取 (来源: tencent)
+  0%|          | 0/5 [00:00<?, ?it/s] 20%|██        | 1/5 [00:00<00:00,  4.07it/s] 40%|████      | 2/5 [00:00<00:00,  4.37it/s] 60%|██████    | 3/5 [00:01<00:00,  2.68it/s] 80%|████████  | 4/5 [00:01<00:00,  3.42it/s]100%|██████████| 5/5 [00:01<00:00,  3.71it/s]                                               0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:00<00:00,  6.10it/s] 50%|█████     | 2/4 [00:00<00:00,  5.13it/s] 75%|███████▌  | 3/4 [00:00<00:00,  6.11it/s]100%|██████████| 4/4 [00:00<00:00,  6.92it/s]                                               0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  5.06it/s]                                             2026-06-07 08:05:45 | INFO     | data_provider/efinance_fetcher.py:1145 | [API调用] ef.stock.get_belong_board(stock_code=603986) 获取所属板块...
+2026-06-07 08:05:45 | INFO     | data_provider/efinance_fetcher.py:1154 | [API返回] ef.stock.get_belong_board 成功: 返回 33 个板块, 耗时 0.25s
+2026-06-07 08:05:45 | INFO     | data_provider/base.py:1997 | [EfinanceFetcher] 获取所属板块成功: 603986, count=33
+2026-06-07 08:05:45 | INFO     | src/core/pipeline.py:421 | 兆易创新(603986.SH) 趋势分析: 多头排列, 买入信号=买入, 评分=72
+2026-06-07 08:05:45 | INFO     | src/core/pipeline.py:448 | 兆易创新(603986.SH) 开始多维度情报搜索...
+2026-06-07 08:05:45 | INFO     | src/search_service.py:3572 | 开始多维度情报搜索: 兆易创新(603986.SH), 时间范围: 近3天 (profile=short, NEWS_MAX_AGE_DAYS=3), 目标条数=3, provider请求条数=6
+2026-06-07 08:05:45 | INFO     | src/search_service.py:3607 | [情报搜索] 最新消息: 使用 Anspire，请求窗口: 近3天
+2026-06-07 08:05:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57399 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:05:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57398 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:05:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57396 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:45 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57397 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:47 | INFO     | src/search_service.py:1189 | [Anspire] 搜索完成，query='兆易创新 603986.SH 最新 新闻 重大 事件'
+2026-06-07 08:05:47 | INFO     | src/search_service.py:1208 | [Anspire] 成功解析 6 条结果
+2026-06-07 08:05:47 | INFO     | src/search_service.py:252 | [Anspire] 搜索 '兆易创新 603986.SH 最新 新闻 重大 事件' 成功，返回 6 条结果，耗时 2.05s
+2026-06-07 08:05:47 | INFO     | src/search_service.py:3086 | [新闻过滤] 603986.SH:Anspire:latest_news: provider=Anspire, total=6, kept=4, drop_unknown=0, drop_old=2, drop_future=0, window=[2026-06-05,2026-06-08]
+2026-06-07 08:05:47 | INFO     | src/search_service.py:2806 | [新闻相关度] 603986.SH:Anspire:latest_news:rank: direct=3, sector=0, macro=0, top_score=91, top_category=direct_company_news, reasons=摘要命中股票代码 603986.SH；标题命中公司名 兆易创新；命中公告/财报/交易等公司事件词
+2026-06-07 08:05:47 | INFO     | src/search_service.py:3659 | [情报搜索] 最新消息: 原始=6条, 过滤后=3条
+2026-06-07 08:05:47 | INFO     | src/search_service.py:3607 | [情报搜索] 机构分析: 使用 SearXNG，请求窗口: 近180天
+2026-06-07 08:05:50 | INFO     | src/search_service.py:1852 | [SearXNG] 已刷新公共实例池，共 20 个候选实例
+2026-06-07 08:05:51 | WARNING  | src/search_service.py:2083 | [SearXNG] 实例 https://search.rhscz.eu 搜索失败: Too Many Requests
+2026-06-07 08:05:53 | WARNING  | src/search_service.py:2083 | [SearXNG] 实例 https://searx.rhscz.eu 搜索失败: Too Many Requests
+2026-06-07 08:05:54 | WARNING  | src/search_service.py:2083 | [SearXNG] 实例 https://searx.tiekoetter.com 搜索失败: Too Many Requests
+2026-06-07 08:05:54 | WARNING  | src/search_service.py:3666 | [情报搜索] 机构分析: 搜索失败 - https://search.rhscz.eu: Too Many Requests；https://searx.rhscz.eu: Too Many Requests；https://searx.tiekoetter.com: Too Many Requests
+2026-06-07 08:05:55 | INFO     | src/search_service.py:3607 | [情报搜索] 风险排查: 使用 Anspire，请求窗口: 近3天
+2026-06-07 08:05:56 | INFO     | src/search_service.py:1189 | [Anspire] 搜索完成，query='兆易创新 减持 处罚 违规 诉讼 利空 风险'
+2026-06-07 08:05:56 | INFO     | src/search_service.py:1208 | [Anspire] 成功解析 1 条结果
+2026-06-07 08:05:56 | INFO     | src/search_service.py:252 | [Anspire] 搜索 '兆易创新 减持 处罚 违规 诉讼 利空 风险' 成功，返回 1 条结果，耗时 1.54s
+2026-06-07 08:05:56 | INFO     | src/search_service.py:3086 | [新闻过滤] 603986.SH:Anspire:risk_check: provider=Anspire, total=1, kept=0, drop_unknown=0, drop_old=1, drop_future=0, window=[2026-06-05,2026-06-08]
+2026-06-07 08:05:56 | INFO     | src/search_service.py:3659 | [情报搜索] 风险排查: 原始=1条, 过滤后=0条
+2026-06-07 08:05:57 | INFO     | src/search_service.py:3607 | [情报搜索] 公司公告: 使用 SearXNG，请求窗口: 近3天
+2026-06-07 08:05:58 | WARNING  | src/search_service.py:2083 | [SearXNG] 实例 https://searx.rhscz.eu 搜索失败: Too Many Requests
+2026-06-07 08:05:59 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57429 - "GET /api/v1/analysis/tasks?status=pending,processing&limit=100 HTTP/1.1" 200
+2026-06-07 08:05:59 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57428 - "GET /api/v1/history?page=1&limit=10&stock_code=MARKET&report_type=market_review HTTP/1.1" 200
+2026-06-07 08:05:59 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57426 - "GET /api/v1/history?page=1&limit=20&start_date=2026-05-08&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:59 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57427 - "GET /api/v1/history/stocks?start_date=2026-03-09&end_date=2026-06-07 HTTP/1.1" 200
+2026-06-07 08:05:59 | WARNING  | src/search_service.py:2083 | [SearXNG] 实例 https://searx.tiekoetter.com 搜索失败: Too Many Requests
+2026-06-07 08:06:01 | WARNING  | src/search_service.py:2083 | [SearXNG] 实例 https://search.hbubli.cc 搜索失败: 响应JSON解析失败
+2026-06-07 08:06:01 | WARNING  | src/search_service.py:3666 | [情报搜索] 公司公告: 搜索失败 - https://searx.rhscz.eu: Too Many Requests；https://searx.tiekoetter.com: Too Many Requests；https://search.hbubli.cc: 响应JSON解析失败
+2026-06-07 08:06:01 | INFO     | src/search_service.py:3607 | [情报搜索] 业绩预期: 使用 Anspire，请求窗口: 近180天
+2026-06-07 08:06:02 | INFO     | src/agent/skills/base.py:360 | Loaded 15 built-in skills from /Users/lilongge/WorkBuddy/2026-06-06-14-44-58/daily_stock_analysis/strategies
+2026-06-07 08:06:02 | INFO     | src/agent/factory.py:236 | [AgentFactory] SkillManager prototype cached (15 skills)
+2026-06-07 08:06:02 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57428 - "GET /api/v1/agent/skills HTTP/1.1" 200
+2026-06-07 08:06:02 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57429 - "GET /api/v1/stocks/watchlist HTTP/1.1" 200
+2026-06-07 08:06:02 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57426 - "GET /api/v1/system/config?include_schema=false HTTP/1.1" 200
+2026-06-07 08:06:03 | INFO     | src/search_service.py:1189 | [Anspire] 搜索完成，query='兆易创新 业绩预告 财报 营收 净利润 同比增长'
+2026-06-07 08:06:03 | INFO     | src/search_service.py:1208 | [Anspire] 成功解析 6 条结果
+2026-06-07 08:06:03 | INFO     | src/search_service.py:252 | [Anspire] 搜索 '兆易创新 业绩预告 财报 营收 净利润 同比增长' 成功，返回 6 条结果，耗时 1.77s
+2026-06-07 08:06:03 | INFO     | src/search_service.py:2806 | [新闻相关度] 603986.SH:Anspire:earnings:rank: direct=3, sector=0, macro=0, top_score=91, top_category=direct_company_news, reasons=摘要命中股票代码 603986；标题命中公司名 兆易创新；命中公告/财报/交易等公司事件词
+2026-06-07 08:06:03 | INFO     | src/search_service.py:3659 | [情报搜索] 业绩预期: 原始=6条, 过滤后=3条
+2026-06-07 08:06:04 | INFO     | src/core/pipeline.py:464 | 兆易创新(603986.SH) 情报搜索完成: 共 6 条结果
+2026-06-07 08:06:04 | INFO     | src/storage.py:1241 | 保存新闻情报成功: 603986.SH, 新增 3 条
+2026-06-07 08:06:04 | INFO     | src/storage.py:1241 | 保存新闻情报成功: 603986.SH, 新增 2 条
+2026-06-07 08:06:04 | INFO     | src/agent/skills/base.py:431 | Activated skills: ['bull_trend']
+2026-06-07 08:06:04 | INFO     | src/agent/factory.py:280 | [AgentFactory] Activated skills: ['bull_trend']
+2026-06-07 08:06:06 | INFO     | src/analyzer.py:2747 | ========== AI 分析 兆易创新(603986.SH) ==========
+2026-06-07 08:06:06 | INFO     | src/analyzer.py:2748 | [LLM配置] 模型: deepseek/deepseek-v4-pro
+2026-06-07 08:06:06 | INFO     | src/analyzer.py:2749 | [LLM配置] Prompt 长度: 5524 字符
+2026-06-07 08:06:06 | INFO     | src/analyzer.py:2750 | [LLM配置] 是否包含新闻: 是
+2026-06-07 08:06:06 | INFO     | src/analyzer.py:2754 | [LLM Prompt 预览]
+# 决策仪表盘分析请求
+
+## 📊 股票基础信息
+| 项目 | 数据 |
+|------|------|
+| 股票代码 | **603986.SH** |
+| 股票名称 | **兆易创新** |
+| 分析日期 | 2026-06-07 |
+
+---
+
+## 市场阶段上下文
+- 当前市场阶段：非交易日
+- 市场：cn
+- 市场本地时间：2026-06-07T08:05:29.513877+08:00
+- 最新可复用完整日线日期：2026-06-05
+- 阶段约束：当前不是交易日或属于强制运行，只能基于上一完整交易日（2026-06-05）和已知事件分析，不得伪造今日盘中走势。
+
+## 分析上下文包摘要
+- 标的：603986.SH（兆易创新）；市场=cn，pack_version=1.0
+- 数据块状态：
+  - 行情: fallback；source=tencent
+  - 日线: available；source=storage.get_analysis_context
+  - 技术: partial；告警=intraday_realtime_overlay
+  - 筹码: avai...
+2026-06-07 08:06:06 | INFO     | src/analyzer.py:2763 | [LLM调用] 开始调用 deepseek/deepseek-v4-pro...
+2026-06-07 08:06:10 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57445 - "GET /api/v1/portfolio/accounts?include_inactive=false HTTP/1.1" 200
+2026-06-07 08:06:10 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57446 - "GET /api/v1/portfolio/imports/csv/brokers HTTP/1.1" 200
+2026-06-07 08:06:10 | INFO     | data_provider/tushare_fetcher.py:169 | Tushare API 初始化成功
+2026-06-07 08:06:10 | INFO     | data_provider/tushare_fetcher.py:200 | ✅ 检测到 TUSHARE_TOKEN 且 API 初始化成功，Tushare 数据源优先级提升为最高 (Priority -1)
+2026-06-07 08:06:10 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57448 - "GET /api/v1/portfolio/trades?page=1&page_size=20 HTTP/1.1" 200
+2026-06-07 08:06:10 | INFO     | data_provider/base.py:1113 | 已初始化 6 个数据源（按优先级）: TushareFetcher(P-1), EfinanceFetcher(P0), AkshareFetcher(P1), PytdxFetcher(P2), BaostockFetcher(P3), YfinanceFetcher(P4)
+2026-06-07 08:06:10 | WARNING  | data_provider/tushare_fetcher.py:408 | 无法确定股票 兆易创新 的市场，默认使用深市
+2026-06-07 08:06:10 | WARNING  | data_provider/tushare_fetcher.py:775 | Tushare (旧版) 获取实时行情失败 兆易创新: 'ascii' codec can't encode characters in position 46-49: ordinal not in range(128)
+2026-06-07 08:06:10 | INFO     | data_provider/akshare_fetcher.py:1226 | [API调用] 腾讯财经接口获取 兆易创新 实时行情: endpoint=qt.gtimg.cn/q, symbol=sz兆易创新
+2026-06-07 08:06:14 | INFO     | data_provider/akshare_fetcher.py:1298 | 腾讯 实时行情接口失败: endpoint=qt.gtimg.cn/q, stock_code=兆易创新, symbol=sz兆易创新, category=insufficient_fields, error_type=InsufficientFields, elapsed=4.27s, detail=field_count=1
+2026-06-07 08:06:14 | INFO     | data_provider/akshare_fetcher.py:1075 | [API调用] 新浪财经接口获取 兆易创新 实时行情: endpoint=hq.sinajs.cn/list, symbol=sz兆易创新
+2026-06-07 08:06:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/backtest/performance HTTP/1.1" 404
+2026-06-07 08:06:15 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/backtest/results?page=1&limit=20 HTTP/1.1" 200
+2026-06-07 08:06:16 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/alerts/rules?page=1&page_size=20 HTTP/1.1" 200
+2026-06-07 08:06:16 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/alerts/triggers?page=1&page_size=20 HTTP/1.1" 200
+2026-06-07 08:06:16 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57458 - "GET /api/v1/alerts/notifications?page=1&page_size=20 HTTP/1.1" 200
+2026-06-07 08:06:18 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/system/config?include_schema=true HTTP/1.1" 200
+2026-06-07 08:06:19 | INFO     | data_provider/akshare_fetcher.py:1095 | 新浪 实时行情接口失败: endpoint=hq.sinajs.cn/list, stock_code=兆易创新, symbol=sz兆易创新, category=http_status, error_type=HTTPStatus, elapsed=5.25s, detail=HTTP 400
+2026-06-07 08:06:19 | INFO     | data_provider/efinance_fetcher.py:659 | [缓存未命中] 触发全量刷新 实时行情(efinance)
+2026-06-07 08:06:22 | INFO     | data_provider/efinance_fetcher.py:664 | [API调用] ef.stock.get_realtime_quotes() 获取实时行情...
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/system/config?include_schema=false HTTP/1.1" 200
+2026-06-07 08:06:22 | INFO     | src/config.py:1963 | LLM channel 'deepseek': 1 model(s), 1 key(s)
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "PUT /api/v1/system/config HTTP/1.1" 200
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/alphasift/status HTTP/1.1" 200
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/system/config?include_schema=false HTTP/1.1" 200
+2026-06-07 08:06:22 | INFO     | src/config.py:1963 | LLM channel 'deepseek': 1 model(s), 1 key(s)
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "PUT /api/v1/system/config HTTP/1.1" 200
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57457 - "GET /api/v1/alphasift/status HTTP/1.1" 200
+2026-06-07 08:06:22 | INFO     | .venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py:484 | 127.0.0.1:57480 - "GET /api/v1/system/config?include_schema=true HTTP/1.1" 200
+2026-06-07 08:06:23 | INFO     | data_provider/efinance_fetcher.py:672 | [API返回] ef.stock.get_realtime_quotes 成功: 返回 5861 只股票, 耗时 1.06s
+2026-06-07 08:06:23 | INFO     | data_provider/efinance_fetcher.py:678 | [缓存更新] 实时行情(efinance) 缓存已刷新，TTL=600s
+2026-06-07 08:06:23 | INFO     | data_provider/efinance_fetcher.py:685 | [API返回] 未找到股票 兆易创新 的实时行情
+2026-06-07 08:06:23 | INFO     | data_provider/akshare_fetcher.py:974 | [缓存未命中] 触发全量刷新 A股实时行情(东财)
+2026-06-07 08:06:26 | INFO     | data_provider/akshare_fetcher.py:983 | [API调用] ak.stock_zh_a_spot_em() 获取A股实时行情... (attempt 1/2)
+  0%|          | 0/58 [00:00<?, ?it/s]  2%|▏         | 1/58 [00:00<00:55,  1.03it/s]                                              2026-06-07 08:06:34 | INFO     | data_provider/akshare_fetcher.py:995 | [API错误] ak.stock_zh_a_spot_em 获取失败 (attempt 1/2): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-06-07 08:06:41 | INFO     | data_provider/akshare_fetcher.py:983 | [API调用] ak.stock_zh_a_spot_em() 获取A股实时行情... (attempt 2/2)
+2026-06-07 08:06:46 | INFO     | data_provider/akshare_fetcher.py:995 | [API错误] ak.stock_zh_a_spot_em 获取失败 (attempt 2/2): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-06-07 08:06:50 | INFO     | data_provider/akshare_fetcher.py:1000 | [API错误] ak.stock_zh_a_spot_em 最终失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-06-07 08:06:50 | INFO     | data_provider/akshare_fetcher.py:1005 | [缓存更新] A股实时行情(东财) 缓存已刷新，TTL=1200s
+2026-06-07 08:06:50 | INFO     | data_provider/akshare_fetcher.py:1008 | [实时行情] A股实时行情数据为空，跳过 兆易创新
+2026-06-07 08:06:54 | INFO     | src/analyzer.py:2797 | [LLM返回] deepseek/deepseek-v4-pro 响应成功, 耗时 48.48s, 响应长度 5807 字符
+2026-06-07 08:06:54 | INFO     | src/analyzer.py:2801 | [LLM返回 预览]
+```json
+{
+    "stock_name": "兆易创新（603986）",
+    "sentiment_score": 68,
+    "trend_prediction": "看多",
+    "operation_advice": "持有",
+    "decision_type": "hold",
+    "confidence_level": "中",
+
+    "dashboard": {
+        "core_conclusion": {
+            "one_sentence": "多头趋势未破但短期回调，空仓观望等企稳，持仓者轻仓持有",
+   ...
+2026-06-07 08:06:54 | INFO     | src/analyzer.py:2856 | [LLM解析] 兆易创新(603986.SH) 分析完成: 看多, 评分 68
+2026-06-07 08:06:54 | INFO     | src/core/pipeline.py:2233 | [603986.SH] 分析完成: 持有, 评分 68
+2026-06-07 08:06:54 | INFO     | src/services/task_queue.py:699 | [TaskQueue] 任务完成: b53bafee30f04fbbbb915a74a5f174b8 (603986.SH)
+/opt/homebrew/Cellar/python@3.12/3.12.13_2/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
