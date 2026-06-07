@@ -17,6 +17,7 @@ on:
           - full          # 完整分析（股票+大盘）
           - market-only   # 仅大盘复盘
           - stocks-only   # 仅股票分析
+          - alphasift     # AlphaSift 全市场选股
       force_run:
         description: '强制运行（跳过交易日检查）'
         required: false
@@ -466,6 +467,24 @@ jobs:
             python main.py --market-review $FORCE_RUN_ARG
           elif [ "$MODE" = "stocks-only" ]; then
             python main.py --no-market-review $FORCE_RUN_ARG
+          elif [ "$MODE" = "alphasift" ]; then
+            echo "=== AlphaSift 全市场选股模式 ==="
+            echo "可用策略:"
+            alphasift strategies
+            echo ""
+            echo "执行 volume_breakout 策略（放量突破）..."
+            alphasift screen volume_breakout \
+              --max-output 10 \
+              --save-run \
+              --explain \
+              2>&1 | tee reports/alphasift_result.txt
+            ALPHASIFT_EXIT=$?
+            echo ""
+            if [ $ALPHASIFT_EXIT -eq 0 ]; then
+              echo "AlphaSift 选股完成"
+            else
+              echo "AlphaSift 选股完成（存在部分降级）"
+            fi
           else
             python main.py $FORCE_RUN_ARG
           fi
