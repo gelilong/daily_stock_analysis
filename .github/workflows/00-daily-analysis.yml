@@ -374,6 +374,8 @@ jobs:
           # 可选值: tencent, akshare_sina, efinance, akshare_em, tushare
           # 如果有 Tushare Pro 高积分账号，可将 tushare 放在首位
           REALTIME_SOURCE_PRIORITY: ${{ vars.REALTIME_SOURCE_PRIORITY || 'tencent,akshare_sina,efinance,akshare_em' }}
+          # AlphaSift 全市场快照源（已付费 Tushare 优先，免费源降级）
+          SNAPSHOT_SOURCE_PRIORITY: tushare
           
         run: |
           # 处理 LITELLM YAML 配置文件
@@ -484,6 +486,32 @@ jobs:
               echo "AlphaSift 选股完成"
             else
               echo "AlphaSift 选股完成（存在部分降级）"
+            fi
+            
+            # 推送到 PushPlus 微信
+            if [ -n "$PUSHPLUS_TOKEN" ] && [ -f reports/alphasift_result.txt ]; then
+              echo ""
+              echo "📲 推送选股结果到微信..."
+              python3 -c "
+import json, urllib.request
+with open('reports/alphasift_result.txt', 'r') as f:
+    content = f.read()[:2000]
+msg = {
+    'token': '$PUSHPLUS_TOKEN',
+    'title': 'AlphaSift 选股日报 | volume_breakout',
+    'content': content,
+    'template': 'txt'
+}
+req = urllib.request.Request(
+    'http://www.pushplus.plus/send',
+    data=json.dumps(msg, ensure_ascii=False).encode('utf-8'),
+    headers={'Content-Type': 'application/json'}
+)
+resp = json.loads(urllib.request.urlopen(req).read())
+print('PushPlus 响应:', resp.get('msg', resp))
+              "
+            else
+              echo "⚠️ 跳过微信推送（PUSHPLUS_TOKEN 未配置或结果文件不存在）"
             fi
           else
             python main.py $FORCE_RUN_ARG
