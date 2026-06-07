@@ -474,8 +474,8 @@ jobs:
             echo "可用策略:"
             alphasift strategies
             echo ""
-            echo "执行 volume_breakout 策略（放量突破）..."
-            alphasift screen volume_breakout \
+            echo "执行 capital_heat 策略（资金热度）..."
+            alphasift screen capital_heat \
               --max-output 10 \
               --save-run \
               --explain \
